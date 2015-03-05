@@ -47,13 +47,24 @@ object Util {
 
   // P31 Determine whether a given integer number is prime.
   def isPrime (n:Int):Boolean = {
-
-  	def isPrime0(n:Int, k:Int):Boolean = (n,k) match {
-  		case (n,k) if k == 1 => true
-  		case (n,k) if n % k == 0 => false
-  		case (n,k) => isPrime0(n,k-1)
+  	def isPrime0(k:Int):Boolean = k match {
+  		case k if k == 1 => true
+  		case k if n % k == 0 => false
+  		case k => isPrime0(k-1)
   	}
-  	isPrime0(n,n-1)
+  	isPrime0(n-1)
   }
 
+  // P33 (*) Determine whether two positive integer numbers are coprime.
+	implicit class IntOps(x:Int) {
+
+		def isCoprimeTo(y:Int):Boolean = {
+			def isCoprimeTo0(count:Int):Boolean = count match {
+				case count if count == 1 => true
+				case count if (x % count == 0 && y % count == 0) => false
+				case count => isCoprimeTo0(count-1)
+			}
+			isCoprimeTo0(x.min(y))
+		}
+	}
 }
