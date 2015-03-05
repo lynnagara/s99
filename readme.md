@@ -3,8 +3,10 @@
 From http://aperiodic.net/phil/scala/s-99/
 
 ### SBT commands
+* sbt
 
-sbt
+#### Run code
+* run or ~run
 
-~run
-
+#### Run tests
+* test or ~test
